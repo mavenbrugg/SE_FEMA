@@ -1,8 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
+	<link rel="stylesheet" type="text/css" href="FEMA_main.css">
+</head>
 <body>
-	<h1>This is a basic webpage!</h1>
-	<p>Hello World!</p>
+	<div id="StartPage">
+		<h1>Welcome to the Natural Disaster Resource Management System</h1>
+		<h2>Which type of user are you?</h2>
+		<ul>
+			<li id="FEMADirector">FEMA Director</li>
+			<li id="Supplier">Supplier</li>
+			<li id="DistCenter">Distribution Center</li>
+			<li id="Driver">Driver</li>
+			<li id="Skilled Worker">Skilled Worker</li>
+		</ul>
+	</div>
+	<div id="FEMAPage">
+		<button>Back</button>
+		<h1>Welcome, FEMA Director!</h1>
+		<h2>You may enter new item and labor needs and view enterred orders below</h2>
+		<div id="FEMAItemView">
+			<select>
+				<option value="item">Item</option>
+				<option value="labor">Labor</option>
+			</select>
+			<form>
+				<label for="itemName">Item Name:</label>
+				<input type="text" id="itemName" name="itemName">
+				<br>
+				<label for="itemQuantity">Item Quantity:</label>
+				<input type="text" id="itemQuantity" name="itemQuantity">
+				<br>
+				<label for="itemAddress">Address Needed At:</label>
+				<input type="text" id="itemAddress" name="itemAddress">
+				<br>
+				<input type="submit" name="">
+			</form>
+			<h2>THERE SHALL BE HERE A GREAT TABLE, THE LIKENESS OF WHICH HAS NEVER BEEN SEEN BEFORE NOR SHALL BE SEEN HEREAFTER</h2>
+		</div>
+	</div>
+	
 </body>
 </html>

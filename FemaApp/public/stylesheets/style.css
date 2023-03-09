@@ -1,0 +1,19 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: lightblue;
+  color: "EEEEEE";
+}
+
+a {
+  color: hotpink;
+  font-weight: bold;
+}
+
+#StartPage {
+  display: ;
+}
+
+#FEMAPage {
+  display: none;
+}

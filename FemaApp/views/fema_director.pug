@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  #startPage
+    a(href="./") Back
+    h1 Welcome #{title}
+    h2 You may enter new item and labor needs and view enterred orders below.
+    
+    select#formSelect
+      option(value="item") Item
+      option(value="labor") Labor
+
+    .Form#itemForm
+      form(method="POST")
+        label(for="itemName") Item Name: 
+        br
+        input(type="text", id="itemName", name="itemName")
+        br
+        label(for="itemQty") Item Quantity: 
+        br
+        input(type="text", id="itemQty", name="itemQty")
+        br
+        label(for="itemAddr") Address: 
+        br
+        input(type="text", id="itemAddr", name="itemAddr")
+        br
+        input(type="submit", name="")
+    p #{itemName}
+    p #{itemQty}
+    p #{itemAddr}
+
+    .Form#laborForm
+      form(method="POST")
+        label(for="laborName") Labor Required: 
+        br
+        input(type="text", id="laborName", name="laborName")
+        br
+        label(for="laborStartDate") Start Date: 
+        br
+        input(type="text", id="laborStartDate", name="laborStartDate")
+        br
+        label(for="laborEndDate") End Date: 
+        br
+        input(type="text", id="laborEndDate", name="laborEndDate")
+        br
+        label(for="laborAddr") Address: 
+        br
+        input(type="text", id="laborAddr", name="laborAddr")
+        br
+        input(type="submit", name="")
+    p #{laborName}
+    p #{laborStartDate}
+    p #{laborEndDate}
+    p #{laborAddr}
+    .Table
+
+block scripts
+  script(src="/javascripts/fema_director_form.js")
+      
+    

@@ -2,7 +2,7 @@ extends layout
 
 block content
   #startPage
-    a(href="./") Back
+    a(href="/") Back
     h1 Welcome #{title}
     h2 You may enter new item and labor needs and view enterred orders below.
     
@@ -12,6 +12,7 @@ block content
 
     .Form#itemForm
       form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="Items")
         label(for="itemName") Item Name: 
         br
         input(type="text", id="itemName", name="itemName")
@@ -20,9 +21,9 @@ block content
         br
         input(type="text", id="itemQty", name="itemQty")
         br
-        label(for="itemAddr") Address: 
+        label(for="itemAddress") Address: 
         br
-        input(type="text", id="itemAddr", name="itemAddr")
+        input(type="text", id="itemAddress", name="itemAddress")
         br
         input(type="submit", name="")
     p #{itemName}
@@ -31,6 +32,7 @@ block content
 
     .Form#laborForm
       form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="Labor")
         label(for="laborName") Labor Required: 
         br
         input(type="text", id="laborName", name="laborName")
@@ -45,16 +47,46 @@ block content
         br
         label(for="laborAddr") Address: 
         br
-        input(type="text", id="laborAddr", name="laborAddr")
+        input(type="text", id="laborAddress", name="laborAddress")
         br
         input(type="submit", name="")
     p #{laborName}
     p #{laborStartDate}
     p #{laborEndDate}
     p #{laborAddr}
-    .Table
+
+    table#itemsTable
+      thead
+        tr
+          th ID
+          th Name
+          th Quantity
+          th Address
+          th Status
+      tbody
+        tr
+    br
+
+    table#laborTable
+      thead
+        tr
+          th ID
+          th Name
+          th Start Date
+          th End Date
+          th Address
+          th Status
+      tbody
+        tr
+
+
+    p#hiddenItemsData(style="display: none") #{itemsData}
+
+    
 
 block scripts
+  script(src="/javascripts/tableGenerator.js")
   script(src="/javascripts/fema_director_form.js")
+  
       
     

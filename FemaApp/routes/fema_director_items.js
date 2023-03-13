@@ -9,7 +9,7 @@ express().use(bodyParser.urlencoded({ extended: true }));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  sqlControl.selectAll("Labor").then( // .then makes sure it waits for the SQL request
+  sqlControl.selectAll("Items").then( // .then makes sure it waits for the SQL request
     function(value) {
       // Display the page
       res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
@@ -35,14 +35,22 @@ router.post('/', function(req, res, next) {
     }
   };
 
-  sqlControl.insertInto("Labor", formKeys, formData).then();
+  // Add Status field
+  formKeys.push("itemStatus");
+  formData.push("Not Committed");
 
-  sqlControl.selectAll("Labor").then( // .then makes sure it waits for the SQL request
+  sqlControl.insertInto("Items", formKeys, formData).then(
     function(value) {
-      // Display the page
-      res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+      sqlControl.selectAll("Items").then( // .then makes sure it waits for the SQL request
+        function(value) {
+          // Display the page
+          res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+        }
+      );
     }
   );
+
+  
 });
 
 module.exports = router;

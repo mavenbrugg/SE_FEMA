@@ -1,8 +1,42 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  #StartPage
-    h1 Welcome to the Natural Disaster Resource Management System
-    h2 Which type of user are you?
+  #SupplierPage
+    a(href="./") Back
+    h1 Welcome #{title}! 
+    h2 Please enter your Supplier name and address, as well as the ID of an item order to fulfil from the table below.
+
+    .Form#supplierForm
+      form(method="POST")
+        label(for="supplierName") Supplier Name: 
+        br
+        input(type="text", id="supplierName", name="supplierName")
+        br
+        label(for="supplierAddr") Supplier Address: 
+        br
+        input(type="text", id="supplierAddr", name="supplierAddr")
+        br
+        label(for="itemID") Item Order ID: 
+        br
+        input(type="text", id="itemID", name="itemID")
+        br
+        input(type="submit", name="")
+    p #{supplierName}
+    p #{supplierAddr}
+    p #{itemID}
+
+    table#itemsTable
+      thead
+        tr
+          th ID
+          th Name
+          th Quantity
+          th Address
+      tbody
+        tr
+
+    p#hiddenItemsData(style="display: none") #{itemsData}
+
+block scripts
+  script(src="/javascripts/tableGenerator.js")
+  script(src="/javascripts/supplierForm.js")

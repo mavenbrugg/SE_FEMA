@@ -35,14 +35,22 @@ router.post('/', function(req, res, next) {
     }
   };
 
-  sqlControl.insertInto("Labor", formKeys, formData).then();
+  // Add Status field
+  formKeys.push("laborStatus");
+  formData.push("Not Started");
 
-  sqlControl.selectAll("Labor").then( // .then makes sure it waits for the SQL request
+  sqlControl.insertInto("Labor", formKeys, formData).then(
     function(value) {
-      // Display the page
-      res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+      sqlControl.selectAll("Labor").then( // .then makes sure it waits for the SQL request
+        function(value) {
+          // Display the page
+          res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+        }
+      );
     }
   );
+
+  
 });
 
 module.exports = router;

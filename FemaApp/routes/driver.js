@@ -9,7 +9,7 @@ express().use(bodyParser.urlencoded({ extended: true }));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  sqlControl.selectRows("Items", "itemStatus", "Committed").then( // .then makes sure it waits for the SQL request
+  sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "committed").then( // .then makes sure it waits for the SQL request
     function(value) {
       // Display the page
       res.render('driver', { title: "Driver", itemsData: sqlParse.sqlFormat(value) });
@@ -21,12 +21,11 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
   // For item input:
   var driverName = req.body.driverName;
-  var itemID = req.body.itemID;
-  console.log(itemID);
+  var i_request_id = req.body.i_request_id;
 
-  sqlControl.updateRow("Items", "itemID", itemID, "itemStatus", "En Route").then( // .then makes sure it waits for the SQL request
+  sqlControl.updateRow("`ITEM REQUEST`", "i_request_id", i_request_id, ["completion_status"], ["en route"]).then( // .then makes sure it waits for the SQL request
     function(value) {
-      sqlControl.selectRows("Items", "itemStatus", "Committed").then( // .then makes sure it waits for the SQL request
+      sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "committed").then( // .then makes sure it waits for the SQL request
         function(value) {
           // Display the page
           res.render('driver', { title: "Driver", itemsData: sqlParse.sqlFormat(value) });

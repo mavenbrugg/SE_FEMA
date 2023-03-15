@@ -13,41 +13,62 @@ block content
     .Form#itemForm
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="Items")
-        label(for="itemName") Item Name: 
+        label(for="item_name") Item Name: 
         br
-        input(type="text", id="itemName", name="itemName")
+        input(type="text", id="item_name", name="item_name")
         br
-        label(for="itemQty") Item Quantity: 
+        label(for="item_quantity") Item Quantity: 
         br
-        input(type="text", id="itemQty", name="itemQty")
+        input(type="text", id="item_quantity", name="item_quantity")
         br
-        label(for="itemAddress") Address: 
+        label(for="destination_street") Street: 
         br
-        input(type="text", id="itemAddress", name="itemAddress")
+        input(type="text", id="destination_street", name="destination_street")
+        br
+        label(for="destination_city") City: 
+        br
+        input(type="text", id="destination_city", name="destination_city")
+        br
+        label(for="destination_state") State Code: 
+        br
+        input(type="text", id="destination_state", name="destination_state")
+        br
+        label(for="destination_zip") ZIP: 
+        br
+        input(type="text", id="destination_zip", name="destination_zip")
         br
         input(type="submit", name="")
-    p #{itemName}
-    p #{itemQty}
-    p #{itemAddr}
 
     .Form#laborForm
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="Labor")
-        label(for="laborName") Labor Required: 
+        label(for="labor_description") Labor Description: 
         br
-        input(type="text", id="laborName", name="laborName")
+        input(type="text", id="labor_description", name="labor_description")
         br
-        label(for="laborStartDate") Start Date: 
+        label(for="begin_date") Begin Date: 
         br
-        input(type="text", id="laborStartDate", name="laborStartDate")
+        input(type="text", id="begin_date", name="begin_date")
         br
-        label(for="laborEndDate") End Date: 
+        label(for="end_date") End Date: 
         br
-        input(type="text", id="laborEndDate", name="laborEndDate")
+        input(type="text", id="end_date", name="end_date")
         br
-        label(for="laborAddr") Address: 
+        label(for="labor_street") Street: 
         br
-        input(type="text", id="laborAddress", name="laborAddress")
+        input(type="text", id="labor_street", name="labor_street")
+        br
+        label(for="labor_city") City: 
+        br
+        input(type="text", id="labor_city", name="labor_city")
+        br
+        label(for="labor_state") State Code: 
+        br
+        input(type="text", id="labor_state", name="labor_state")
+        br
+        label(for="labor_zip") ZIP: 
+        br
+        input(type="text", id="labor_zip", name="labor_zip")
         br
         input(type="submit", name="")
     p #{laborName}
@@ -61,8 +82,18 @@ block content
           th ID
           th Name
           th Quantity
-          th Address
-          th Status
+          th Destination Street
+          th Destination City
+          th Destination State Code
+          th Destination ZIP
+          th Current Street
+          th Current City
+          th Current State Code
+          th Current ZIP
+          th Completion Status
+          th Orderer
+          th Supplier
+          th Distribution Center
       tbody
         tr
     br
@@ -71,11 +102,16 @@ block content
       thead
         tr
           th ID
-          th Name
-          th Start Date
+          th Description
+          th Begin Date
           th End Date
-          th Address
-          th Status
+          th Street
+          th City
+          th State Code
+          th ZIP
+          th Completion Status
+          th Orderer
+          th Volunteer
       tbody
         tr
 

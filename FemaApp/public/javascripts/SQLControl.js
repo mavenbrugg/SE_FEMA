@@ -6,7 +6,7 @@ function createConnection() {
     host: "localhost",
     user: "root",
     password: "Sql1234!",
-    database: "mydb",
+    database: "fema_schema",
   }));
 };
 
@@ -183,13 +183,22 @@ exports.deleteRow = async function(tableName, idName, rowID) {
 
 
 // Update given row from a table based on ID
-exports.updateRow = async function(tableName, idName, rowID, colName, newVal) {
+exports.updateRow = async function(tableName, idName, rowID, colNames, newVals) {
   // Create a promise so that the app waits for the select to finish
   let updatePromise = new Promise( function(resolve) {
     con = createConnection();
     con.connect(function(err) {
       if (err) throw err;
-      con.query(`UPDATE ${tableName} SET ${colName}="${newVal}" WHERE ${idName}=${rowID};`, function (err, result, fields) {
+
+      // Construct sql query
+      let sqlString = "";
+      for (let i = 0; i < colNames.length; i++) {
+        sqlString += `${colNames[i]}="${newVals[i]}", `
+      }
+      sqlString += "<end>";
+      sqlString = sqlString.replace(", <end>", ""); // Remove string artifacts (extra comma after names and vals)
+
+      con.query(`UPDATE ${tableName} SET ${sqlString} WHERE ${idName}=${rowID};`, function (err, result, fields) {
         if (err) throw err;
         console.log(result);
         resolve(result);

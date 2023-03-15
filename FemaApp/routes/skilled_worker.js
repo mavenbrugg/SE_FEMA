@@ -9,7 +9,7 @@ express().use(bodyParser.urlencoded({ extended: true }));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  sqlControl.selectRows("Labor", "laborStatus", "Not Started").then( // .then makes sure it waits for the SQL request
+  sqlControl.selectRows("`LABOR REQUEST`", "completion_status", "requested").then( // .then makes sure it waits for the SQL request
     function(value) {
       // Display the page
       res.render('skilled_worker', { title: "Skilled Worker", itemsData: sqlParse.sqlFormat(value) });
@@ -20,11 +20,11 @@ router.get('/', function(req, res, next) {
 // User submitted item/labor form
 router.post('/', function(req, res, next) {
 
-  var laborID = req.body.laborID;
+  var l_request_id = req.body.l_request_id;
 
-  sqlControl.updateRow("Labor", "laborID", laborID, "laborStatus", "In Progress").then(
+  sqlControl.updateRow("`LABOR REQUEST`", "l_request_id", l_request_id, ["completion_status"], ["in progress"]).then(
     function(value) {
-      sqlControl.selectRows("Labor", "laborStatus", "Not Started").then( // .then makes sure it waits for the SQL request
+      sqlControl.selectRows("`LABOR REQUEST`", "completion_status", "requested").then( // .then makes sure it waits for the SQL request
         function(value) {
           // Display the page
           res.render('skilled_worker', { title: "Skilled Worker", itemsData: sqlParse.sqlFormat(value) });

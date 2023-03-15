@@ -20,7 +20,7 @@ console.log(rows);
 
 
 // Generate Items table (from other file)
-generateTable(laborTable, rows, "laborTable", ["laborStatus",]);
+generateTable(laborTable, rows, "laborTable", ["completion_status", "f_requester", "l_volunteer"]);
 
 
 

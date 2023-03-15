@@ -9,7 +9,7 @@ express().use(bodyParser.urlencoded({ extended: true }));
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  sqlControl.selectRows("Items", "itemStatus", "Not Committed").then( // .then makes sure it waits for the SQL request
+  sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "Requested").then( // .then makes sure it waits for the SQL request
     function(value) {
       // Display the page
       res.render('supplier', { title: "Supplier", itemsData: sqlParse.sqlFormat(value) });
@@ -19,14 +19,19 @@ router.get('/', function(req, res, next) {
 
 // User submitted form
 router.post('/', function(req, res, next) {
-  // For item input:
+  // Inputs from form:
   var supplierName = req.body.supplierName;
-  var supplierAddr = req.body.supplierAddr;
-  var itemID = req.body.itemID;
+  var current_street = req.body.current_street;
+  var current_city = req.body.current_city;
+  var current_state = req.body.current_state;
+  var current_zip = req.body.current_zip;
+  var i_request_id = req.body.i_request_id;
 
-  sqlControl.updateRow("Items", "itemID", itemID, "itemStatus", "Committed").then( // .then makes sure it waits for the SQL request
+  sqlControl.updateRow("`ITEM REQUEST`", "i_request_id", i_request_id, ["completion_status", "current_street",
+   "current_city", "current_state", "current_zip"], ["committed", current_street, current_city, current_state,
+    current_zip]).then( // .then makes sure it waits for the SQL request
     function(value) {
-      sqlControl.selectRows("Items", "itemStatus", "Not Committed").then( // .then makes sure it waits for the SQL request
+      sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "Requested").then( // .then makes sure it waits for the SQL request
         function(value) {
           // Display the page
           res.render('supplier', { title: "Supplier", itemsData: sqlParse.sqlFormat(value) });

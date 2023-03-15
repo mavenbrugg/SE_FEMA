@@ -14,6 +14,7 @@ var supplierRouter = require('./routes/supplier');
 var distCenterRouter = require('./routes/dist_center');
 var driverRouter = require('./routes/driver');
 var skilledWorkerRouter = require('./routes/skilled_worker');
+var createUser = require('./routes/create_user');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/supplier', supplierRouter);
 app.use('/dist_center', distCenterRouter);
 app.use('/driver', driverRouter);
 app.use('/skilled_worker', skilledWorkerRouter);
+app.use('/create_user', createUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -12,13 +12,25 @@ block content
         br
         input(type="text", id="supplierName", name="supplierName")
         br
-        label(for="supplierAddr") Supplier Address: 
+        label(for="current_street") Supplier Street: 
         br
-        input(type="text", id="supplierAddr", name="supplierAddr")
+        input(type="text", id="current_street", name="current_street")
         br
-        label(for="itemID") Item Order ID: 
+        label(for="current_city") Supplier City: 
         br
-        input(type="text", id="itemID", name="itemID")
+        input(type="text", id="current_city", name="current_city")
+        br
+        label(for="current_state") Supplier State Code: 
+        br
+        input(type="text", id="current_state", name="current_state")
+        br
+        label(for="current_zip") Supplier ZIP: 
+        br
+        input(type="text", id="current_zip", name="current_zip")
+        br
+        label(for="i_request_id") Item Order ID: 
+        br
+        input(type="text", id="i_request_id", name="i_request_id")
         br
         input(type="submit", name="")
     p #{supplierName}
@@ -31,7 +43,6 @@ block content
           th ID
           th Name
           th Quantity
-          th Address
       tbody
         tr
 

@@ -12,9 +12,9 @@ block content
         br
         input(type="text", id="workerName", name="workerName")
         br
-        label(for="laborID") Work Order ID: 
+        label(for="l_request_id") Work Order ID: 
         br
-        input(type="text", id="laborID", name="laborID")
+        input(type="text", id="l_request_id", name="l_request_id")
         br
         input(type="submit", name="")
     p #{workerName}
@@ -24,10 +24,13 @@ block content
       thead
         tr
           th ID
-          th Name
-          th Start Date
+          th Description
+          th Begin Date
           th End Date
-          th Address
+          th Street
+          th City
+          th State Code
+          th ZIP
       tbody
         tr
 

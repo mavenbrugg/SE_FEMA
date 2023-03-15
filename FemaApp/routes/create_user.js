@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   sqlControl.selectAll("`ITEM REQUEST`").then( // .then makes sure it waits for the SQL request
     function(value) {
       // Display the page
-      res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+      res.render('create_user', { title: "Create User", itemsData: sqlParse.sqlFormat(value) });
     }
   );
 });
@@ -44,7 +44,7 @@ router.post('/', function(req, res, next) {
       sqlControl.selectAll("`ITEM REQUEST`").then( // .then makes sure it waits for the SQL request
         function(value) {
           // Display the page
-          res.render('fema_director', { title: "Fema Director", itemsData: sqlParse.sqlFormat(value) });
+          res.render('create_user', { title: "Create User", itemsData: sqlParse.sqlFormat(value) });
         }
       );
     }

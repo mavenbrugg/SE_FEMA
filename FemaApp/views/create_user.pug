@@ -1,0 +1,104 @@
+extends layout
+
+block content
+  #startPage
+    a(href="/") Back
+    h1 Welcome New User
+    h2 If you are a new user, please enter your user type and user data below to be given a user ID!
+    
+    select#formSelect
+      option(value="FEMA") FEMA Director
+      option(value="SUPPLIER") Supplier
+      option(value="DRIVER") Driver
+      option(value="DISTRIBUTION_CENTER") Distribution Center
+      option(value="LABORER") Laborer
+
+    .Form#FEMA
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="FEMA")
+        label(for="user_name") Name: 
+        br
+        input(type="text", id="user_name", name="user_name")
+        br
+        input(type="submit", name="")
+
+    .Form#SUPPLIER
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="SUPPLIER")
+        label(for="user_name") Name: 
+        br
+        input(type="text", id="user_name", name="user_name")
+        br
+        label(for="street") Street: 
+        br
+        input(type="text", id="street", name="street")
+        br
+        label(for="city") City: 
+        br
+        input(type="text", id="city", name="city")
+        br
+        label(for="state") State Code: 
+        br
+        input(type="text", id="state", name="state")
+        br
+        label(for="zip") ZIP: 
+        br
+        input(type="text", id="zip", name="zip")
+        br
+        label(for="dc_nearest") Nearest Distribution Center ID: 
+        br
+        input(type="text", id="dc_nearest", name="dc_nearest")
+        br
+        input(type="submit", name="")
+
+    .Form#DRIVER
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="DRIVER")
+        label(for="user_name") Name: 
+        br
+        input(type="text", id="user_name", name="user_name")
+        br
+        input(type="submit", name="")
+
+    .Form#DISTRIBUTION_CENTER
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="DISTRIBUTION CENTER")
+        label(for="user_name") Name: 
+        br
+        input(type="text", id="user_name", name="user_name")
+        br
+        label(for="street") Street: 
+        br
+        input(type="text", id="street", name="street")
+        br
+        label(for="city") City: 
+        br
+        input(type="text", id="city", name="city")
+        br
+        label(for="state") State Code: 
+        br
+        input(type="text", id="state", name="state")
+        br
+        label(for="zip") ZIP: 
+        br
+        input(type="text", id="zip", name="zip")
+        br
+        input(type="submit", name="")
+
+    .Form#LABORER
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="LABORER")
+        label(for="user_name") Item Name: 
+        br
+        input(type="text", id="user_name", name="user_name")
+        br
+        input(type="submit", name="")
+
+    
+
+block scripts
+  script(src="/javascripts/tableGenerator.js")
+  script(src="/javascripts/createUserForm.js")
+  
+      
+    

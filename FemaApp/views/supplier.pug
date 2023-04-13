@@ -32,6 +32,14 @@ block content
         br
         input(type="text", id="i_request_id", name="i_request_id")
         br
+        label(for="item_quantity") Quantity: 
+        br
+        input(type="text", id="item_quantity", name="item_quantity")
+        br
+        label(for="s_supplier") Supplier ID: 
+        br
+        input(type="text", id="s_supplier", name="s_supplier")
+        br
         input(type="submit", name="")
     p #{supplierName}
     p #{supplierAddr}
@@ -43,6 +51,10 @@ block content
           th ID
           th Name
           th Quantity
+          th Destination Street
+          th Destination City
+          th Destination State Code
+          th Destination ZIP
       tbody
         tr
 

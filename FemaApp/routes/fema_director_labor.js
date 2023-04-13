@@ -35,10 +35,6 @@ router.post('/', function(req, res, next) {
     }
   };
 
-  // Add Status field
-  formKeys.push("f_requester");
-  formData.push("1");
-
   sqlControl.insertInto("`LABOR REQUEST`", formKeys, formData).then(
     function(value) {
       sqlControl.selectAll("`LABOR REQUEST`").then( // .then makes sure it waits for the SQL request

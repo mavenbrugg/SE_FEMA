@@ -37,6 +37,10 @@ block content
         br
         input(type="text", id="destination_zip", name="destination_zip")
         br
+        label(for="f_orderer") FEMA Director ID: 
+        br
+        input(type="text", id="f_orderer", name="f_orderer")
+        br
         input(type="submit", name="")
 
     .Form#laborForm
@@ -69,6 +73,10 @@ block content
         label(for="labor_zip") ZIP: 
         br
         input(type="text", id="labor_zip", name="labor_zip")
+        br
+        label(for="f_requester") FEMA Director ID: 
+        br
+        input(type="text", id="f_requester", name="f_requester")
         br
         input(type="submit", name="")
     p #{laborName}

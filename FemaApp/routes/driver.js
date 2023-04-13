@@ -22,13 +22,18 @@ router.post('/', function(req, res, next) {
   // For item input:
   var driverName = req.body.driverName;
   var i_request_id = req.body.i_request_id;
+  var d_driver = req.body.d_driver;
 
   sqlControl.updateRow("`ITEM REQUEST`", "i_request_id", i_request_id, ["completion_status"], ["en route"]).then( // .then makes sure it waits for the SQL request
     function(value) {
-      sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "committed").then( // .then makes sure it waits for the SQL request
+      sqlControl.insertInto("`DRIVERS TRANSPORTING ITEMS`", ["d_driver", "i_request"], [d_driver, i_request_id]).then(
         function(value) {
-          // Display the page
-          res.render('driver', { title: "Driver", itemsData: sqlParse.sqlFormat(value) });
+          sqlControl.selectRows("`ITEM REQUEST`", "completion_status", "committed").then( // .then makes sure it waits for the SQL request
+            function(value) {
+              // Display the page
+              res.render('driver', { title: "Driver", itemsData: sqlParse.sqlFormat(value) });
+            }
+          );
         }
       );
     }

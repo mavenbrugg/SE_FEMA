@@ -13,7 +13,9 @@ var femaDirectorLaborRouter = require('./routes/fema_director_labor');
 var supplierRouter = require('./routes/supplier');
 var distCenterRouter = require('./routes/dist_center');
 var driverRouter = require('./routes/driver');
+var driverViewRouter = require('./routes/driver_view');
 var skilledWorkerRouter = require('./routes/skilled_worker');
+var skilledWorkerViewRouter = require('./routes/skilled_worker_view');
 var createUser = require('./routes/create_user');
 
 var app = express();
@@ -37,7 +39,9 @@ app.use('/fema_director/labor', femaDirectorLaborRouter);
 app.use('/supplier', supplierRouter);
 app.use('/dist_center', distCenterRouter);
 app.use('/driver', driverRouter);
+app.use('/driver/view', driverViewRouter);
 app.use('/skilled_worker', skilledWorkerRouter);
+app.use('/skilled_worker/view', skilledWorkerViewRouter);
 app.use('/create_user', createUser);
 
 // catch 404 and forward to error handler

@@ -20,9 +20,10 @@ router.get('/', function(req, res, next) {
 // User submitted item/labor form
 router.post('/', function(req, res, next) {
 
-  var l_request_id = req.body.l_request_id;
+  let l_request_id = req.body.l_request_id;
+  let l_volunteer = req.body.l_volunteer;
 
-  sqlControl.updateRow("`LABOR REQUEST`", "l_request_id", l_request_id, ["completion_status"], ["in progress"]).then(
+  sqlControl.updateRow("`LABOR REQUEST`", "l_request_id", l_request_id, ["completion_status", "l_volunteer"], ["in progress", l_volunteer]).then(
     function(value) {
       sqlControl.selectRows("`LABOR REQUEST`", "completion_status", "requested").then( // .then makes sure it waits for the SQL request
         function(value) {

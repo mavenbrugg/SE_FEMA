@@ -55,6 +55,21 @@ exports.dropTable = function() {
 };
 
 
+// Drop a table
+exports.selectTest = function() {
+  con = createConnection();
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    var sql = "SELECT * FROM DRIVER;";
+    con.query(sql, function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+};
+
+
 // // Insert a row into a table
 // exports.insertInto = async function(itemName, itemQty, itemAddr) {
 //   // Create a promise so that the app waits for the insert to finish
@@ -125,7 +140,6 @@ exports.selectAll = async function(tableName) {
       if (err) throw err;
       con.query(`SELECT * FROM ${tableName}`, function (err, result, fields) {
         if (err) throw err;
-        console.log(result);
         resolve(result);
       });
     });
@@ -147,7 +161,6 @@ exports.selectRows = async function(tableName, colName, colRestriction) {
       if (err) throw err;
       con.query(`SELECT * FROM ${tableName} WHERE ${colName}="${colRestriction}"`, function (err, result, fields) {
         if (err) throw err;
-        console.log(result);
         resolve(result);
       });
     });
@@ -169,7 +182,6 @@ exports.deleteRow = async function(tableName, idName, rowID) {
       if (err) throw err;
       con.query(`DELETE FROM ${tableName} WHERE ${idName}=${rowID};`, function (err, result, fields) {
         if (err) throw err;
-        console.log(result);
         resolve(result);
       });
     });
@@ -200,7 +212,6 @@ exports.updateRow = async function(tableName, idName, rowID, colNames, newVals) 
 
       con.query(`UPDATE ${tableName} SET ${sqlString} WHERE ${idName}=${rowID};`, function (err, result, fields) {
         if (err) throw err;
-        console.log(result);
         resolve(result);
       });
     });
@@ -208,6 +219,27 @@ exports.updateRow = async function(tableName, idName, rowID, colNames, newVals) 
 
   // Wait for the select to finish
   promiseAnswer = await updatePromise;
+
+  return (promiseAnswer);
+};
+
+
+// Select inputted rows from a table
+exports.selectFirstById = async function(tableName) {
+  // Create a promise so that the app waits for the select to finish
+  let selectPromise = new Promise( function(resolve) {
+    con = createConnection();
+    con.connect(function(err) {
+      if (err) throw err;
+      con.query(`SELECT user_id FROM ${tableName} ORDER BY user_id DESC LIMIT 1;`, function (err, result, fields) {
+        if (err) throw err;
+        resolve(result);
+      });
+    });
+  });
+
+  // Wait for the select to finish
+  promiseAnswer = await selectPromise;
 
   return (promiseAnswer);
 };

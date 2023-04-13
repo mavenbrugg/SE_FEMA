@@ -2,7 +2,7 @@ extends layout
 
 block content
   #driverPage
-    a(href="./") Back
+    a(href="/") Back
     h1 Welcome #{title}! 
     h2 Please enter your Driver name, as well as the ID of an item order to pick up from the table below.
 
@@ -15,6 +15,10 @@ block content
         label(for="i_request_id") Item Order ID: 
         br
         input(type="text", id="i_request_id", name="i_request_id")
+        br
+        label(for="d_driver") Driver ID: 
+        br
+        input(type="text", id="d_driver", name="d_driver")
         br
         input(type="submit", name="")
     p #{driverName}
@@ -36,6 +40,10 @@ block content
           th Current ZIP
       tbody
         tr
+
+    br
+
+    a(href="./driver/view") View Committed Item Orders
 
     p#hiddenItemsData(style="display: none") #{itemsData}
 

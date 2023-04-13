@@ -33,7 +33,7 @@ changeForm();
 /*----- Control Table -----*/ 
 
 // Get table data from page and split into an array
-let tableData = document.getElementById("hiddenItemsData").innerHTML.split("\n");
+let tableData = document.getElementById("hiddenTableData").innerHTML.split("\n");
 
 // Array of row objects
 let rows = [];
@@ -44,7 +44,7 @@ for (const obj of tableData) {
 
 
 // Generate Items table (from other file)
-// generateTable(laborTable, rows, "laborTable", ["completion_status", "f_requester", "l_volunteer"]);
+generateTable(userTable, rows, "userTable", ["user_email", "user_phone"]);
 
 
 

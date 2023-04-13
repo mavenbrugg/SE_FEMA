@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  #driverPage
+    a(href="./") Back
+    h1 Welcome #{title}! 
+    h2 Please enter your Driver ID to view your committed item orders.
+
+    .Form#driverViewForm
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="driverView")
+        label(for="d_driver") Driver ID: 
+        br
+        input(type="text", id="d_driver", name="d_driver")
+        br
+        input(type="submit", name="")
+    p #{driverName}
+    p #{itemID}
+
+    table#itemsTable
+      thead
+        tr
+          th Driver ID
+          th Item Request ID
+      tbody
+        tr
+
+    h2 Enter an item request ID to mark it as delivered.
+    .Form#driverCompleteForm
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="driverComplete")
+        label(for="i_request") Item Request ID: 
+        br
+        input(type="text", id="i_request", name="i_request")
+        br
+        input(type="submit", name="")
+
+    p#hiddenItemsData(style="display: none") #{itemsData}
+
+block scripts
+  script(src="/javascripts/tableGenerator.js")
+  script(src="/javascripts/driverForm.js")

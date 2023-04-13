@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  #driverPage
+    a(href="./") Back
+    h1 Welcome #{title}! 
+    h2 Please enter your Laborer ID to view your committed labor orders.
+
+    .Form#workerViewForm
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="laborView")
+        label(for="l_volunteer") Laborer ID: 
+        br
+        input(type="text", id="l_volunteer", name="l_volunteer")
+        br
+        input(type="submit", name="")
+    p #{driverName}
+    p #{itemID}
+
+    table#laborTable
+      thead
+        tr
+          th Labor Request ID
+          th Description
+          th Begin Date
+          th End Date
+          th Street
+          th City
+          th State Code
+          th ZIP
+          th Laborer ID
+      tbody
+        tr
+
+    h2 Enter a labor request ID to mark it as complete.
+    .Form#laborerCompleteForm
+      form(method="POST")
+        input(type="hidden", class="formName", name="formName", value="laborComplete")
+        label(for="l_request_id") Labor Request ID: 
+        br
+        input(type="text", id="l_request_id", name="l_request_id")
+        br
+        input(type="submit", name="")
+
+    p#hiddenItemsData(style="display: none") #{itemsData}
+
+block scripts
+  script(src="/javascripts/tableGenerator.js")
+  script(src="/javascripts/skilledWorkerViewForm.js")

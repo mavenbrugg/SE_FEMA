@@ -20,9 +20,12 @@ console.log(rows);
 
 
 // Generate Items table (from other file)
+// generateTable(itemsTable, rows, "itemsTable", ["completion_status", "current_street", "current_city",
+//  "current_state", "current_zip", "destination_street", "destination_city", "destination_state",
+//   "destination_zip", "f_orderer", "s_supplier", "dc_intermediate"]);
+
 generateTable(itemsTable, rows, "itemsTable", ["completion_status", "current_street", "current_city",
- "current_state", "current_zip", "destination_street", "destination_city", "destination_state",
-  "destination_zip", "f_orderer", "s_supplier", "dc_intermediate"]);
+ "current_state", "current_zip", "f_orderer", "s_supplier", "dc_intermediate"]);
 
 
 

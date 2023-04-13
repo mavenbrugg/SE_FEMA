@@ -16,34 +16,34 @@ block content
     .Form#FEMA
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="FEMA")
-        label(for="user_name") Name: 
+        label(for="user_name_FEMA") Name: 
         br
-        input(type="text", id="user_name", name="user_name")
+        input(type="text", id="user_name_FEMA", name="user_name_FEMA")
         br
         input(type="submit", name="")
 
     .Form#SUPPLIER
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="SUPPLIER")
-        label(for="user_name") Name: 
+        label(for="user_name_supplier") Name: 
         br
-        input(type="text", id="user_name", name="user_name")
+        input(type="text", id="user_name_supplier", name="user_name_supplier")
         br
-        label(for="street") Street: 
+        label(for="street_supplier") Street: 
         br
-        input(type="text", id="street", name="street")
+        input(type="text", id="street_supplier", name="street_supplier")
         br
-        label(for="city") City: 
+        label(for="city_supplier") City: 
         br
-        input(type="text", id="city", name="city")
+        input(type="text", id="city_supplier", name="city_supplier")
         br
-        label(for="state") State Code: 
+        label(for="state_supplier") State Code: 
         br
-        input(type="text", id="state", name="state")
+        input(type="text", id="state_supplier", name="state_supplier")
         br
-        label(for="zip") ZIP: 
+        label(for="zip_supplier") ZIP: 
         br
-        input(type="text", id="zip", name="zip")
+        input(type="text", id="zip_supplier", name="zip_supplier")
         br
         label(for="dc_nearest") Nearest Distribution Center ID: 
         br
@@ -54,45 +54,58 @@ block content
     .Form#DRIVER
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="DRIVER")
-        label(for="user_name") Name: 
+        label(for="user_name_driver") Name: 
         br
-        input(type="text", id="user_name", name="user_name")
+        input(type="text", id="user_name_driver", name="user_name_driver")
         br
         input(type="submit", name="")
 
     .Form#DISTRIBUTION_CENTER
       form(method="POST")
-        input(type="hidden", class="formName", name="formName", value="DISTRIBUTION CENTER")
-        label(for="user_name") Name: 
+        input(type="hidden", class="formName", name="formName", value="DISTRIBUTION_CENTER")
+        label(for="user_name_dist") Name: 
         br
-        input(type="text", id="user_name", name="user_name")
+        input(type="text", id="user_name_dist", name="user_name_dist")
         br
-        label(for="street") Street: 
+        label(for="street_dist") Street: 
         br
-        input(type="text", id="street", name="street")
+        input(type="text", id="street_dist", name="street_dist")
         br
-        label(for="city") City: 
+        label(for="city_dist") City: 
         br
-        input(type="text", id="city", name="city")
+        input(type="text", id="city_dist", name="city_dist")
         br
-        label(for="state") State Code: 
+        label(for="state_dist") State Code: 
         br
-        input(type="text", id="state", name="state")
+        input(type="text", id="state_dist", name="state_dist")
         br
-        label(for="zip") ZIP: 
+        label(for="zip_dist") ZIP: 
         br
-        input(type="text", id="zip", name="zip")
+        input(type="text", id="zip_dist", name="zip_dist")
         br
         input(type="submit", name="")
 
     .Form#LABORER
       form(method="POST")
         input(type="hidden", class="formName", name="formName", value="LABORER")
-        label(for="user_name") Item Name: 
+        label(for="user_name_laborer") Item Name: 
         br
-        input(type="text", id="user_name", name="user_name")
+        input(type="text", id="user_name_laborer", name="user_name_laborer")
         br
         input(type="submit", name="")
+
+    br
+
+    table#userTable
+      thead
+        tr
+          th ID
+          th User Name
+          th User Type
+      tbody
+        tr
+
+    p#hiddenTableData(style="display: none") #{tableData}
 
     
 

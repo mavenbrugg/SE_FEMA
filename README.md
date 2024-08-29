@@ -9,5 +9,5 @@ The premise of this website is that it would be used by the Federal Emergency Ma
 - site pages written in Pug
 
 
-Created by Maven Bruggemann in Spring 2023 for CPTR 460 - Software Engineering at Andrews University
+Created by Maven Bruggemann and Wesley Martin in Spring 2023 for CPTR 460 - Software Engineering at Andrews University
 
